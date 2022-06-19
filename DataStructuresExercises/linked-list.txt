@@ -1,0 +1,6 @@
+5
+Antipa 30 400
+Istorie 10 100
+Geologie 5 50
+Arta 15 125
+Literatura 7 25
