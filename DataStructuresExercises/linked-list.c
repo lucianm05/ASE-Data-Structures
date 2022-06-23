@@ -98,13 +98,15 @@ void modificareNumeMuzeu(Nod* cap, const char* numeCautat, const char* numeNou) 
 	if (cap) {
 		Nod* aux = cap;
 
-		while (aux->next && strcmp(numeCautat, aux->info.nume) != 0) {
+		while (aux && strcmp(numeCautat, aux->info.nume) != 0) {
 			aux = aux->next;
 		}
 
-		free(aux->info.nume);
-		aux->info.nume = (char*)malloc(sizeof(char) * (strlen(numeNou) + 1));
-		strcpy(aux->info.nume, numeNou);
+		if (aux) {
+			free(aux->info.nume);
+			aux->info.nume = (char*)malloc(sizeof(char) * (strlen(numeNou) + 1));
+			strcpy(aux->info.nume, numeNou);
+		}
 	}
 }
 
@@ -128,11 +130,13 @@ Nod* eliminareNodDupaNume(Nod* cap, const char* numeCautat) {
 				next = aux->next;
 			}
 
-			aux->next = next->next;
+			if (aux->next && next->next) {
+				aux->next = next->next;
 
-			free(next->info.nume);
-			free(next);
-			next = NULL;
+				free(next->info.nume);
+				free(next);
+				next = NULL;
+			}
 
 			return cap;
 		}

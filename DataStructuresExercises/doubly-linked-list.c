@@ -17,7 +17,7 @@ struct Nod {
 };
 
 struct ListaDubla {
-	struct Nod* first; 
+	struct Nod* first;
 	struct Nod* last;
 };
 
@@ -107,7 +107,7 @@ void dezalocareNod(Nod* nod) {
 	free(nod);
 }
 
-void dezalocareListaInceput(ListaDubla *lista) {
+void dezalocareLista(ListaDubla* lista) {
 	Nod* aux = lista->first;
 
 	while (aux->next) {
@@ -118,6 +118,65 @@ void dezalocareListaInceput(ListaDubla *lista) {
 
 	lista->first = NULL;
 	lista->last = NULL;
+}
+
+void modificareNumePilot(ListaDubla lista, const char* numeCautat, const char* numeNou) {
+	if (lista.first) {
+		Nod* aux = lista.first;
+
+		while (aux && strcmp(numeCautat, aux->info.numePilot) != 0) {
+			aux = aux->next;
+		}
+
+		if (aux) {
+			free(aux->info.numePilot);
+			aux->info.numePilot = (char*)malloc(sizeof(char) * (strlen(numeNou) + 1));
+			strcpy(aux->info.numePilot, numeNou);
+		}
+	}
+}
+
+ListaDubla eliminareDupaNume(ListaDubla* lista, const char* numeCautat) {
+	if (lista->first) {
+		if (strcmp(lista->first->info.numePilot, numeCautat) == 0) {
+			Nod* next = lista->first->next;
+			dezalocareNod(lista->first);
+			lista->first = next;
+			lista->first->prev = NULL;
+
+			return *lista;
+		}
+
+		if (strcmp(lista->last->info.numePilot, numeCautat) == 0) {
+			Nod* prev = lista->last->prev;
+			dezalocareNod(lista->last);
+			lista->last = prev;
+			lista->last->next = NULL;
+
+			return *lista;
+		}
+
+		Nod* aux = lista->first;
+		Nod* next = aux->next;
+
+		while (next && strcmp(next->info.numePilot, numeCautat) != 0) {
+			aux = aux->next;
+			next = aux->next;
+		}
+
+		if (aux->next && next->next) {
+			aux->next = next->next;
+
+			dezalocareNod(next);
+
+			next = NULL;
+		}
+
+
+		return *lista;
+	}
+
+	return *lista;
 }
 
 int main() {
@@ -139,18 +198,34 @@ int main() {
 
 		fscanf(fisier, "%d", &avion.nrPasageri);
 
-		lista = inserareInceput(lista, avion);
+		// lista = inserareInceput(lista, avion);
+		lista = inserareSfarsit(lista, avion);
 
 		dezalocareAvion(avion);
 	}
 
 	fclose(fisier);
 
+	printf("\n=== Traversare de la inceput ===\n");
 	afisareListaInceput(lista);
-	printf("\n");
+	printf("\n\n=== Traversare de la sfarsit === \n");
 	afisareListaSfarsit(lista);
 
-	dezalocareListaInceput(&lista);
+	printf("\n=== Modificare nume piloti 1, 3, 5 si unul inexistent (Tudor -> Mihai) ===\n");
+	modificareNumePilot(lista, "George", "Georgescu");
+	modificareNumePilot(lista, "Paul", "Paulescu");
+	modificareNumePilot(lista, "Marcian", "Marcianescu");
+	modificareNumePilot(lista, "Tudor", "Mihai");
+	afisareListaInceput(lista);
+
+	printf("\n=== Eliminare piloti 1, 3, 5 si unul inexistent (Tudor) ===\n");
+	lista = eliminareDupaNume(&lista, "Georgescu");
+	lista = eliminareDupaNume(&lista, "Paulescu");
+	lista = eliminareDupaNume(&lista, "Marcianescu");
+	lista = eliminareDupaNume(&lista, "Tudor");
+	afisareListaInceput(lista);
+
+	dezalocareLista(&lista);
 
 	return 0;
 }
