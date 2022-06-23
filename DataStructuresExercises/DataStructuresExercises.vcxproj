@@ -127,9 +127,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="linked-list.c" />
+    <ClCompile Include="doubly-linked-list.c" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="doubly-linked-list.txt" />
     <Text Include="linked-list.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

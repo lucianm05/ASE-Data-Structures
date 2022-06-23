@@ -1,0 +1,6 @@
+5
+George 120
+Ionescu 200
+Paul 150
+Andrei 230
+Marcian 300

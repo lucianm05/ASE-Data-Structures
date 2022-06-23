@@ -16,15 +16,21 @@
     <Filter Include="Source Files\linked-list">
       <UniqueIdentifier>{84447f87-c787-4e5f-9c93-153efd0a4f1f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\doubly-linked-list">
+      <UniqueIdentifier>{d7b99c86-3af0-4bd0-9c63-6fbc7daa0f7a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="linked-list.txt">
       <Filter>Source Files\linked-list</Filter>
     </Text>
+    <Text Include="doubly-linked-list.txt">
+      <Filter>Source Files\doubly-linked-list</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="linked-list.c">
-      <Filter>Source Files\linked-list</Filter>
+    <ClCompile Include="doubly-linked-list.c">
+      <Filter>Source Files\doubly-linked-list</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
