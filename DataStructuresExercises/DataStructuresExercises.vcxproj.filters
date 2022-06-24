@@ -28,9 +28,10 @@
       <Filter>Source Files\doubly-linked-list</Filter>
     </Text>
     <Text Include="stack.txt" />
+    <Text Include="queue.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="stack.c">
+    <ClCompile Include="queue.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -129,10 +129,11 @@
   <ItemGroup>
     <Text Include="doubly-linked-list.txt" />
     <Text Include="linked-list.txt" />
+    <Text Include="queue.txt" />
     <Text Include="stack.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="stack.c" />
+    <ClCompile Include="queue.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
