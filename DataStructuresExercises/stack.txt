@@ -1,0 +1,6 @@
+5
+plastic 10
+lemn 20
+carton 5
+plastic 15
+fier 50

@@ -27,9 +27,10 @@
     <Text Include="doubly-linked-list.txt">
       <Filter>Source Files\doubly-linked-list</Filter>
     </Text>
+    <Text Include="stack.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="doubly-linked-list.c">
+    <ClCompile Include="stack.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

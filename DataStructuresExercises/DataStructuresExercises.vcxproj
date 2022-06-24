@@ -129,9 +129,10 @@
   <ItemGroup>
     <Text Include="doubly-linked-list.txt" />
     <Text Include="linked-list.txt" />
+    <Text Include="stack.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="doubly-linked-list.c" />
+    <ClCompile Include="stack.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
