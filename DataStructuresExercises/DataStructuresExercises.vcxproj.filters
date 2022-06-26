@@ -29,9 +29,10 @@
     </Text>
     <Text Include="stack.txt" />
     <Text Include="queue.txt" />
+    <Text Include="list-of-lists.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="queue.c">
+    <ClCompile Include="list-of-lists.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

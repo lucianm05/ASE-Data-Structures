@@ -1,0 +1,6 @@
+5
+1 Alice 10
+2 Lucian 7.43
+3 Larisa 9.23
+4 Alex 7.21
+5 Lepy 8.67
