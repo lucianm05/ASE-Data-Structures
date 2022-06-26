@@ -30,9 +30,10 @@
     <Text Include="stack.txt" />
     <Text Include="queue.txt" />
     <Text Include="list-of-lists.txt" />
+    <Text Include="hash-table-chaining.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="list-of-lists.c">
+    <ClCompile Include="hash-table-chaining.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

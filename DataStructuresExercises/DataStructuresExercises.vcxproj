@@ -128,13 +128,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <Text Include="doubly-linked-list.txt" />
+    <Text Include="hash-table-chaining.txt" />
     <Text Include="linked-list.txt" />
     <Text Include="list-of-lists.txt" />
     <Text Include="queue.txt" />
     <Text Include="stack.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="list-of-lists.c" />
+    <ClCompile Include="hash-table-chaining.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
