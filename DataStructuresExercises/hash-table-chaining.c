@@ -54,8 +54,8 @@ HashTable creareTabela(int size) {
 	return tabela;
 }
 
-int functieHash(HashTable tabela, Pisica pisica) {
-	return strlen(pisica.nume) % tabela.size;
+int functieHash(HashTable tabela, char* nume) {
+	return strlen(nume) % tabela.size;
 }
 
 Nod* inserareLista(Nod* cap, Pisica pisica) {
@@ -76,7 +76,7 @@ Nod* inserareLista(Nod* cap, Pisica pisica) {
 
 int inserareTabela(HashTable tabela, Pisica pisica) {
 	if (tabela.vect && tabela.size > 0) {
-		int pozitie = functieHash(tabela, pisica);
+		int pozitie = functieHash(tabela, pisica.nume);
 
 		if (pozitie <= tabela.size) {
 			tabela.vect[pozitie] = inserareLista(tabela.vect[pozitie], pisica);
@@ -142,6 +142,59 @@ void dezalocareTabela(HashTable tabela) {
 	}
 }
 
+void eliminaPisica(HashTable tabela, const char* nume) {
+	if (tabela.vect && tabela.size > 0) {
+		int pozitie = functieHash(tabela, nume);
+		Nod* elem = tabela.vect[pozitie];
+
+		if (elem != NULL) {
+			Nod* next = elem->next;
+
+			if (strcmp(elem->info.nume, nume) == 0) {
+
+				dezalocareNod(elem);
+
+				tabela.vect[pozitie] = next;
+			}
+			else {
+				while (next && strcmp(next->info.nume, nume) != 0) {
+					elem = elem->next;
+					next = elem->next;
+				}
+
+				if (next) {
+					elem->next = next->next;
+				
+					dezalocareNod(next);
+
+					next = NULL;
+				}
+			}
+		}
+	}
+}
+
+void separarePisici(HashTable tabela, Nod** capPar, Nod** capImpar){
+	if (tabela.vect && tabela.size > 0) {
+		for (int i = 0; i < tabela.size; i++) {
+			if (tabela.vect[i]) {
+				Nod* aux = tabela.vect[i];
+
+				while (aux) {
+					if (*(aux->info.varsta) % 2 == 0) {
+						*capPar = inserareLista(*capPar, aux->info);
+					}
+					else {
+						*capImpar = inserareLista(*capImpar, aux->info);
+					}
+
+					aux = aux->next;
+				}
+			}
+		}
+	}
+}
+
 int main() {
 	HashTable tabela = creareTabela(101);
 	Pisica pisica;
@@ -168,6 +221,23 @@ int main() {
 	fclose(fisier);
 
 	afisareTabela(tabela);
+
+	printf("\n=== Eliminare pisici Falafel, Albert, Cody si una inexistenta (Tony) ===\n");
+	eliminaPisica(tabela, "Falafel");
+	eliminaPisica(tabela, "Albert");
+	eliminaPisica(tabela, "Cody");
+	eliminaPisica(tabela, "Tony");
+	afisareTabela(tabela);
+
+	printf("\n===== Separare pisici in functie de varsta - par si impar =====\n");
+	Nod* capPar = NULL;
+	Nod* capImpar = NULL;
+	separarePisici(tabela, &capPar, &capImpar);
+	printf("\n=== Pisici cu varste pare ===\n");
+	afisareLista(capPar);
+	printf("\n=== Pisici cu varste impare ===\n");
+	afisareLista(capImpar);
+	printf("\n===============================================================\n");
 
 	dezalocareTabela(tabela);
 

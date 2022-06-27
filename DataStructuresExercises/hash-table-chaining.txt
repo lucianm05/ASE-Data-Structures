@@ -1,7 +1,8 @@
-6
+7
 6 Pispis
 2 Ivar
 3 Maia
 5 Humus
 5 Falafel
 10 Albert
+12 Cody
