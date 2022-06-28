@@ -38,7 +38,7 @@ HashTable creareTabela(int size) {
 	return tabela;
 }
 
-int functieHash(int size, char* nume){
+int functieHash(int size, char* nume) {
 	int sum = 0;
 
 	for (int i = 0; i < strlen(nume); i++) {
@@ -108,6 +108,42 @@ void dezalocareTabela(HashTable tabela) {
 	}
 }
 
+int pozitieCaine(HashTable tabela, const char* numeCautat) {
+	if (tabela.vect && tabela.size > 0) {
+		for (int i = 0; i < tabela.size; i++) {
+			if (tabela.vect[i] && strcmp(tabela.vect[i]->nume, numeCautat) == 0) {
+				return i;
+			}
+		}
+	}
+
+	return -1;
+}
+
+void stergereCaine(HashTable tabela, const char* numeCautat) {
+	int pozitie = pozitieCaine(tabela, numeCautat);
+
+	if (pozitie >= 0) {
+		dezalocareCaine(tabela.vect[pozitie]);
+		tabela.vect[pozitie] = NULL;
+	}
+}
+
+void modificareNume(HashTable tabela, const char* numeVechi, const char* numeNou) {
+	int pozitie = pozitieCaine(tabela, numeVechi);
+
+	if (pozitie >= 0) {
+		Caine* caineVechi = tabela.vect[pozitie];
+
+		Caine* caineNou = creareCaine(caineVechi->varsta, numeNou);
+
+		dezalocareCaine(tabela.vect[pozitie]);
+		tabela.vect[pozitie] = NULL;
+
+		inserareTabela(tabela, caineNou);
+	}
+}
+
 int main() {
 	HashTable tabela = creareTabela(101);
 
@@ -136,7 +172,16 @@ int main() {
 
 	afisareTabela(tabela);
 
+	printf("\n=== Stergere caini Tony, Pablito ===\n");
+	stergereCaine(tabela, "Tony");
+	stergereCaine(tabela, "Pablito");
+	afisareTabela(tabela);
+
+	printf("\n=== Modificare nume Daisy - Rolling ===\n");
+	modificareNume(tabela, "Daisy", "Rolling");
+	afisareTabela(tabela);
+
 	dezalocareTabela(tabela);
 
 	return 0;
-} 
+}
