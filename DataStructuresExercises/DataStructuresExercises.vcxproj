@@ -127,6 +127,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <Text Include="avl-tree.txt" />
+    <Text Include="binary-search-tree.txt" />
     <Text Include="doubly-linked-list.txt" />
     <Text Include="hash-table-chaining.txt" />
     <Text Include="hash-table-linear.txt" />
@@ -136,7 +138,7 @@
     <Text Include="stack.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="hash-table-linear.c" />
+    <ClCompile Include="avl-tree.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

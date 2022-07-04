@@ -32,9 +32,11 @@
     <Text Include="list-of-lists.txt" />
     <Text Include="hash-table-chaining.txt" />
     <Text Include="hash-table-linear.txt" />
+    <Text Include="binary-search-tree.txt" />
+    <Text Include="avl-tree.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="hash-table-linear.c">
+    <ClCompile Include="avl-tree.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

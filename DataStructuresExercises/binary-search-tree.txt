@@ -1,0 +1,11 @@
+10
+4 Luci
+1 Alice
+20 Alex
+12 Larisa
+10 Vali
+25 Cius
+17 Tocitu
+35 Balaur
+2 Denis
+9 Gabriela
