@@ -34,10 +34,6 @@
     <Text Include="hash-table-linear.txt" />
     <Text Include="binary-search-tree.txt" />
     <Text Include="avl-tree.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="avl-tree.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
+    <Text Include="heap.txt" />
   </ItemGroup>
 </Project>
