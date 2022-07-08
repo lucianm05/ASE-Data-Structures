@@ -39,7 +39,7 @@ Nod* creareNod(User user, Nod* left, Nod* right) {
 
 Nod* inserareArbore(Nod* rad, User user) {
 	if (rad) {
-		if (*(rad->info.id) < *(user.id)) {
+		if (*(user.id) < *(rad->info.id)) {
 			rad->left = inserareArbore(rad->left, user);
 		}
 		else {
@@ -128,9 +128,9 @@ int calcInaltime(Nod* rad) {
 Nod* cautareNod(Nod* rad, int id) {
 	if (rad == NULL) return NULL;
 
-	if (*(rad->info.id) == id) return rad;
+	if (id == *(rad->info.id)) return rad;
 
-	if (*(rad->info.id) < id) return cautareNod(rad->left, id);
+	if (id < *(rad->info.id)) return cautareNod(rad->left, id);
 	else return cautareNod(rad->right, id);
 }
 
@@ -138,7 +138,7 @@ void drumRadNod(Nod* rad, int id) {
 	if (rad) {
 		printf("%d - ", *(rad->info.id));
 
-		if (*(rad->info.id) < id) {
+		if (id < *(rad->info.id)) {
 			drumRadNod(rad->left, id);
 		}
 		else {

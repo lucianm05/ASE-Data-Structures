@@ -76,7 +76,7 @@ int calcGradEchilibru(Nod* rad) {
 Nod* inserareArbore(Nod* rad, User user) {
 	if (rad == NULL) return creareNod(user, NULL, NULL);
 
-	if (*(rad->info.id) < *(user.id)) {
+	if (*(user.id) < *(rad->info.id)) {
 		rad->left = inserareArbore(rad->left, user);
 	}
 	else {
