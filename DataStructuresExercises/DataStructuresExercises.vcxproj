@@ -138,6 +138,9 @@
     <Text Include="queue.txt" />
     <Text Include="stack.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="heap.c" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

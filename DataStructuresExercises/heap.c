@@ -41,10 +41,10 @@ void filtrareMin(Heap heap, int index) {
 		int indD = index * 2 + 2;
 		int indMax = index;
 
-		if (indS < heap.dim && *(heap.vect[indMax].prioritate) < *(heap.vect[indS].prioritate))
+		if (indS < heap.dim && *(heap.vect[indS].prioritate) < *(heap.vect[indMax].prioritate))
 			indMax = indS;
 
-		if (indD < heap.dim && *(heap.vect[indMax].prioritate) < *(heap.vect[indD].prioritate))
+		if (indD < heap.dim && *(heap.vect[indD].prioritate) < *(heap.vect[indMax].prioritate))
 			indMax = indD;
 
 		if (indMax != index) {
@@ -52,7 +52,7 @@ void filtrareMin(Heap heap, int index) {
 			heap.vect[index] = heap.vect[indMax];
 			heap.vect[indMax] = aux;
 
-			if(indMax < heap.dim / 2 - 1)
+			if(heap.dim > indMax * 2 + 1)
 				filtrareMin(heap, indMax);
 		}
 	}
@@ -93,11 +93,11 @@ void inserare(Heap* heap, Proiect proiect) {
 	free(heap->vect);
 	heap->vect = vectNou;
 
-	//for (int i = heap->dim / 2 - 1; i >= 0; i--)
-	//	filtrareMin(*heap, i);
+	for (int i = (heap->dim - 1) / 2; i >= 0; i--)
+		filtrareMin(*heap, i);
 
-	for (int i = (heap->dim - 2) / 2; i >= 0; i--)
-		filtrareMax(*heap, i);
+	//for (int i = (heap->dim - 1) / 2; i >= 0; i--)
+	//	filtrareMax(*heap, i);
 }
 
 Proiect extragere(Heap* heap) {
@@ -109,8 +109,8 @@ Proiect extragere(Heap* heap) {
 
 	heap->dim--;
 
-	//filtrareMin(*heap, 0);
-	filtrareMax(*heap, 0);
+	filtrareMin(*heap, 0);
+	//filtrareMax(*heap, 0);
 
 	return proiect;
 }
@@ -166,10 +166,12 @@ int main() {
 
 	fclose(fisier);
 
-	//for (int i = heap.dim / 2 - 1; i >= 0; i--)
-	//	filtrareMin(heap, i);
-	for (int i = (heap.dim - 2) / 2; i >= 0; i--)
-		filtrareMax(heap, i);
+	
+	for (int i = (heap.dim - 1) / 2; i >= 0; i--)
+		filtrareMin(heap, i);
+
+	//for (int i = (heap.dim - 1) / 2; i >= 0; i--)
+	//	filtrareMax(heap, i);
 
 	afisareHeap(heap);
 

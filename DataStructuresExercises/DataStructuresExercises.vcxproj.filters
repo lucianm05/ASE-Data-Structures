@@ -36,4 +36,9 @@
     <Text Include="avl-tree.txt" />
     <Text Include="heap.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="heap.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
 </Project>
